@@ -6,4 +6,6 @@ Looking for a place to post your lovely cats 😻, to find a solution for your c
 
 ## How-to-use
 
-To open the application, open the **PawFriends - Work.sln** file in Visual Studio
+To open the application, open the **PawFriends - Work.sln** file in Visual Studio and run it from there.
+![image](https://user-images.githubusercontent.com/95626494/221880470-bd6e1169-c298-4b7a-8158-dabeb30dbd1d.png)
+
