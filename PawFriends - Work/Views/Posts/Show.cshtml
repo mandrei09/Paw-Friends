@@ -1,0 +1,823 @@
+﻿@model PawFriends___Work.Models.Post
+
+@if (TempData["message"] != null)
+{
+    <div class="alert @TempData["messageType"]">
+        @TempData["message"]
+    </div>
+}
+
+<style>
+
+    body {
+        width: 100%;
+        background-color: #ececec;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .feed {
+        margin: 0 auto;
+        width: 750px;
+        padding: 45px 0;
+    }
+
+    .post {
+        width: 100%;
+        background-color: #fff;
+        margin: 0 auto;
+        min-height: 100px;
+        border: 1px solid #ececec;
+        border-radius: 3px;
+        padding: 12px 18px;
+    }
+
+    .post__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .post__top-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .post__profile-img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .post__profile-name {
+        color: #424242;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+        .post__profile-name:hover {
+            text-decoration: underline;
+        }
+
+    .post__date-posted {
+        font-size: 14px;
+        color: #aaaaaa;
+    }
+
+
+    /* Content */
+    .post__content {
+        padding: 14px 8px;
+    }
+
+    .p {
+        font-size: 16px;
+        color: #1d2129;
+    }
+
+    .post__footer {
+        padding: 2px 10px;
+    }
+
+    .footer-link {
+        color: red;
+        margin: 0 30px 0 0;
+        text-decoration: none;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+        .footer-link:hover {
+            color: #1da1f2;
+        }
+
+    .footer-icon {
+        fill: currentColor;
+        margin-right: 4px;
+        display: inline-block;
+        font-size: 24px;
+    }
+
+    .footer-link:nth-child(2):hover {
+        color: #17bf63;
+    }
+
+    .footer-link:nth-child(3):hover {
+        color: #F44336;
+    }
+
+    /* Comment Section */
+
+    .post__comments {
+        border-top: 1px solid #efefef;
+        padding: 16px 0;
+        margin-top: 10px;
+    }
+
+    .comment-create {
+        display: flex;
+        align-items: center;
+        border-radius: 3px;
+    }
+
+    .comment__profile-img {
+        height: 34px;
+        width: 34px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 8px;
+    }
+
+    .input {
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 3px;
+        padding: 6px 14px;
+        border: none;
+        background-color: #eee;
+        height: 34px;
+    }
+
+    .comment {
+        display: flex;
+        margin: 20px 0;
+        align-items: center;
+        border-radius: 3px;
+    }
+
+    .comment__text {
+        background-color: #eee;
+        font-size: 14px;
+        padding: 8px 6px;
+    }
+
+    .comment-name {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        color: #424242;
+    }
+
+        .comment-name:hover {
+            text-decoration: underline
+        }
+
+    .comment__content {
+    }
+
+
+.wrap {
+  width: 95%;
+  margin: 0 auto
+}
+
+
+p {
+  padding-bottom: 16px
+}
+
+
+a:hover,
+a:focus {
+  color: #e8c000
+}
+
+.btn,
+input[type="submit"]#submit {
+  background: #000;
+  color: #fff
+}
+
+.btn:hover,
+input[type="submit"]#submit:hover,
+.btn:focus,
+input[type="submit"]#submit:focus {
+  background: #a68f21;
+  color: #fff
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"] {
+  width: 100%;
+  max-width: 100%;
+  height: 40px;
+  margin-bottom: 18px;
+  padding: 14px 20px;
+  vertical-align: top;
+  border: none;
+  border-radius: 0;
+  font: normal 900 10px/20px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+  height: 152px;
+  margin-bottom: 18px;
+  padding: 10px 20px;
+  vertical-align: middle;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+  font: normal 900 10px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  line-height: 20px;
+  overflow: auto;
+  resize: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+textarea:focus {
+  line-height: 22px
+}
+
+select {
+  width: 30%;
+  height: 40px;
+  padding: 0 3%;
+  display: none;
+  position: relative;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+  font: normal 900 0px/20px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  line-height: 48px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+
+.input-light {
+  background: #f1f1ef;
+  color: #515151
+}
+
+.input-dark {
+  background: #454545;
+  color: #ffffff
+}
+
+
+.page-header .main-nav li ul:before {
+  content: "";
+  width: 0;
+  height: 0;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 8px solid black
+}
+
+body main {
+  padding: 30px 0 0px;
+}
+
+main {
+  padding: 30px 0 58px;
+  overflow-x: hidden;
+  clear: both
+}
+
+main .hero-image {
+  margin-top: 20px;
+  padding-bottom: 52px;
+  display: block;
+  text-align: center
+}
+
+main .hero-image img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto
+}
+
+main .box {
+  width: 100%;
+  height: 116px;
+  margin: 0 auto 30px;
+  display: block;
+  position: relative;
+  background: #fff
+}
+
+main .box_0 {
+  display: block;
+  width: 100%;
+}
+
+main .box .box-image {
+  background-image: url('https://goo.gl/tNc1B0');
+  width: 100%;
+  height: 80px;
+  display: block
+}
+
+main .box h2 {
+  margin: 0 auto;
+  padding-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  font: normal 900 10px/40px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  color: #000;
+  text-align: center;
+}
+
+main .box:hover .box-image,
+main .box:focus .box-image {
+  opacity: 0.8;
+  -webkit-transition: .2s opacity ease-in-out;
+  transition: .2s opacity ease-in-out
+}
+
+main .box:hover h2,
+main .box:focus h2 {
+  color: #a68f21;
+  -webkit-transition: .2s color ease-in-out;
+  transition: .2s color ease-in-out
+}
+
+main .box.social {
+  text-align: center;
+  position: relative
+}
+
+main .box.social a {
+  margin-right: 12px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 90px;
+  color: #000
+}
+
+main .box.social a:hover,
+main .box.social a:focus {
+  color: #ae9623;
+  text-decoration: none
+}
+
+main .box.social > a:nth-child(6) {
+  margin-right: 0
+}
+
+main .box.social h2:after {
+  content: "";
+  display: block;
+  width: 84%;
+  height: 1px;
+  position: absolute;
+  top: 0px;
+  left: 8%;
+  background: #000
+}
+
+.container {
+  margin: 0 auto
+}
+
+article {
+  margin: 0 auto;
+  max-width: 1250px;
+  padding-bottom: 30px;
+  font-size: 14px;
+  line-height: 26px;
+  text-align: left;
+}
+
+article .header {
+  padding: 40px 6% 34px;
+  position: relative;
+  background: #fff
+}
+
+article .title {
+  width: calc(100% - 4px);
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 95px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+article .title h1 {
+  width: 100%;
+  padding-bottom: 0px
+}
+
+article .title h1 a {
+  color: #000;
+  font-style: normal;
+                text-decoration: none;
+}
+
+article .title h1 a:hover,
+article .title h1 a:focus {
+  color: #ae9623;
+  text-decoration: none
+}
+
+
+article .title .byline {
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-style: italic;
+  color: #888
+}
+
+article .title .byline address {
+  padding-right: 8px;
+  display: inline-block
+}
+
+article .title .byline address span {
+  color: #888;
+  text-decoration: none;
+}
+
+article .header .byline time {
+  padding-left: 8px
+}
+
+article .content {
+  background: #fff;
+  padding: 0 6% 48px;
+  overflow: hidden
+}
+
+article .content img {
+  width: 114%;
+  height: auto;
+  margin: 0 0 20px -7%;
+  display: block
+}
+
+article .content figure.wp-caption {
+  max-width: 100%
+}
+
+article .content figure.wp-caption figcaption.wp-caption-text {
+  text-align: center;
+  font-style: italic
+}
+
+article .content img[class*="wp-image"] {
+  width: 114%;
+  height: auto;
+  margin: 10px 0 10px -7%;
+  display: block
+}
+
+
+article .content p:first-child img[class*="post-image"],
+article .content p:first-child img[class*="wp-image"] {
+  margin-top: 0 !important
+}
+
+article .content p.image-wrap {
+  padding-bottom: 0
+}
+
+article .content p.image-wrap+p:not(.image-wrap) {
+  padding-top: 16px
+}
+
+article .content blockquote {
+  margin-top: 10px
+}
+
+article .content .read-more {
+  margin-top: 20px
+}
+
+article .content .read-more a {
+  font-size: 12px;
+  letter-spacing: 2px
+}
+
+article .content .read-more a:hover {
+  background: #a68f21
+}
+
+article .footer {
+  background: #dadad7
+}
+
+article .footer .actions {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center
+}
+
+article .footer .actions .action-button {
+  padding: 26px 0;
+  display: block;
+  font: normal 900 13px/24px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  color: #000;
+  text-align: center;
+}
+
+article .footer .actions .action-button .icon {
+  display: block;
+  font-size: 26px
+}
+
+article .footer .actions .action-button .icon .count {
+  padding: 0 0 0 3px;
+  display: none;
+  vertical-align: top;
+  font-size: 13px
+}
+
+article .footer .actions .action-button:hover {
+  color: #ae9623;
+  text-decoration: none
+}
+
+article .footer .actions .favorite {
+  padding-top: 21px
+}
+
+article .footer .actions .favorite .icon-heart {
+  font-size: 32px;
+  color: #000
+}
+
+article .footer .actions .favorite .active .icon-heart {
+  color: #AE961E
+}
+
+article .footer .actions .favorite .zilla-likes-count {
+  display: none
+}
+
+article .footer .actions .comment .icon .count {
+  padding: 0 0 0 8px
+}
+
+article .footer .actions .twitter .icon .count {
+  padding: 0 0 0 7px
+}
+
+hr {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+</style>
+
+
+<!--Header-->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">PawFriends</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/Home">Home Page</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Categories/Index">Categories</a></li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+</header>
+
+<br />
+
+<!--Post-->
+
+ <main>
+    <section class="container">
+
+        <article>
+            <div class="header">
+                <div class="title">
+                    <h1 style="font: normal 400 24px 'Roboto', Arial, sans-serif;   
+                                padding-bottom: 12px;
+                                color: #000;
+                                text-transform: uppercase">
+                        <a href="/Posts/Show/@Model.Id">@Model.Title</a>
+                    </h1>
+
+                    <div class="byline">
+                        <div style="font-size: 15px;">
+                            @if(@Model.Category.CategoryName == "MedHelp"){
+                                <b>&#9877;</b>
+                            }
+                            @if(@Model.Category.CategoryName == "CatAww"){
+                                <b>&#128157;</b>
+                            }
+                            @Model.Category.CategoryName&#10240;&#10240;|
+                            <time class="entry-date published updated">@Model.Date</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <hr>
+                <div style="justify-content: center; display: flex;">
+                <img style="width: 450px; height: auto;" src="@Model.Icon" />
+                </div>
+                <p>
+                    @Model.Content
+                </p>
+            </div>
+
+        </article>
+
+    </section>
+
+
+    @if (ViewBag.AfisareButoane == true || Model.UserId == ViewBag.UserCurent || ViewBag.EsteAdmin)
+    {
+        <div class="d-flex flex-row justify-content-between p-3 border-1 border-top">
+
+            @if (Model.UserId == ViewBag.UserCurent)
+            {
+                <a class="btn btn-success" href="/Posts/Edit/@Model.Id">Edit Post</a>
+            }
+
+            <form method="post" action="/Posts/Delete/@Model.Id">
+
+                <button class="btn btn-danger" type="submit">Delete Post</button>
+
+            </form>
+
+        </div>
+    }
+
+    <form method="POST" asp-controller="Post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+    </form>
+</main>
+
+<hr />
+
+<!--Comments-->
+
+@foreach (var comm in Model.Comments)
+{
+    <div class="feed">
+
+        <div class="post">
+            <div class="post__top">
+                <div class="post__top-left">
+                    <img class="post__profile-img" src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png" alt="">
+                    <a class="post__profile-name" href="#">@comm.User.UserName</a>
+                </div>
+
+                <div>
+                    <span class="post__date-posted">@comm.Date</span>
+                </div>
+            </div>
+
+            <div class="post__content">
+                <p class="p">@comm.Content</p>
+            </div>
+        </div>
+
+        <div class="d-flex">
+                    
+            @if (comm.UserId == ViewBag.UserCurent)
+            {
+                        
+                    <div>
+
+                        <a class="btn btn-outline-primary" href="/Comments/Edit/@comm.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+
+                    </div>
+            }
+
+            @if (comm.UserId == ViewBag.UserCurent || ViewBag.EsteAdmin)
+            {
+                    <div>
+
+                        <form method="post" action="/Comments/Delete/@comm.Id">
+
+                            <button class="btn btn-outline-danger" type="submit"><i class="bi bi-trash"></i>Delete</button>
+
+                        </form>
+
+                    </div>
+            }
+        </div>
+    </div>
+
+}
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+
+
+
+                <form method="post" action="/Posts/Show/@Model.Id">
+                        <input type="hidden" name="PostId" value="@Model.Id" />
+
+
+                        <textarea class="form-control" name="Content" placeholder="Comment content.."></textarea>
+
+                        @Html.ValidationMessage("Content", null, new { @class = "text-danger"})
+
+                        <br /><br />
+
+                        <button class="btn btn-success " type="submit">Add Comment</button>
+                </form>
+
+
+        </div>
+
+        <div class="col-md-2"></div>
+
+
+        <form method="POST" asp-controller="Post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+        </form>
+
+    </div>
+
+
+
+<br />
+<br />
+
+</div>
+
+<!-- Footer-->
+<footer class="bg-dark text-center text-white" style="margin-bottom: -16px;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/birbyz/" role="button">
+                <i class="bi bi-facebook"></i><small>&#32;Birbyz</small>
+            </a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/imbirbyz/" role="button">
+                <i class="bi bi-instagram"></i><small>&#32;Birbyz</small>
+            </a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/ioana-andreea-filimon-901b31248/" role="button">
+                <i class="bi bi-linkedin"></i><small>&#32;Birbyz</small>
+            </a>
+
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/profile.php?id=100023665218150" role="button">
+                <i class="bi bi-facebook"></i><small>&#32;KVL</small>
+            </a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/m_andrei09/" role="button">
+                <i class="bi bi-instagram"></i><small>&#32;KVL</small>
+            </a>
+
+            <!-- Linkedin -->
+
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022-2023 Copyright:
+        <a class="text-white" href="#">MeowStaff</a>
+    </div>
+    <!-- Copyright -->
+</footer>

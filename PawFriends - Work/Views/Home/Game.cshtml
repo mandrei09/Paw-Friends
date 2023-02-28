@@ -1,0 +1,116 @@
+﻿<style>
+	body {
+		font-family: sans-serif;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		margin: 0;
+		justify-content: center;
+		align-items: center;
+	}
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	#cat-picture {
+		display: grid;
+		grid-template-columns: 500px;
+		max-height: 500px;
+		border-radius: 10px;
+		box-shadow: 0 10px 15px -10px #0008;
+		border: 1px solid #0008;
+		overflow: hidden;
+		margin-bottom: 2rem;
+	}
+
+	img {
+		display: inline-block;
+		background-color: silver;
+		width: 100%;
+		height: auto;
+	}
+
+	.lol {
+		border: none;
+		background-color: goldenrod;
+		color: white;
+		padding: 1rem 2rem;
+		border-radius: 10px;
+		box-shadow: 0 10px 15px -10px #0008;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-size: 1.5rem;
+		font-weight: 700;
+		transition: all 250ms ease-out;
+		opacity: 0.8;
+		width: 500px;
+	}
+
+		.lol:hover,
+		.lol:focus {
+			transform: translatey(-1px);
+			box-shadow: 0 12px 20px -10px #0008;
+			opacity: 1;
+		}
+
+		.lol:active {
+			transform: translatey(2px);
+			box-shadow: 0 2px 2px 0 #000b;
+		}
+
+</style>
+
+
+
+<!--Header-->
+        <header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/Home">PawFriends</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/Categories/Index">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Posts/Index/?page=1">Posts</a</li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+</header>
+
+<h1>Cats uwu</h1>
+<div id="cat-picture">
+	<img src="" alt="" width="250" height="250" />
+</div>
+<button class="lol" onclick="newCat()">Get another cat</button>
+
+
+
+<script>
+	const img = document.getElementById("cat-picture").querySelector("img");
+	const button = document.querySelector("button");
+
+	function setLoading() {
+		button.innerText = "Fetching a cat";
+	}
+	function clearLoading() {
+		button.innerText = "Get another cat";
+	}
+	async function newCat() {
+		setLoading();
+		const catUrl = await fetchAnotherCat();
+		img.src = catUrl;
+		clearLoading();
+	}
+
+	async function fetchAnotherCat() {
+		const newCat = await fetch("https://api.thecatapi.com/v1/images/search");
+		const catData = await newCat.json();
+		return catData[0].url;
+	}
+
+	newCat();
+
+</script>

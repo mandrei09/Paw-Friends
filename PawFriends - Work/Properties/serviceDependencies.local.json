@@ -1,0 +1,44 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "mssql2": {
+      "secretStore": null,
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:PawFriendsWork",
+      "dynamicId": null
+    },
+    "mssql5": {
+      "secretStore": null,
+      "type": "mssql.local",
+      "connectionId": "PawFriends",
+      "dynamicId": null
+    },
+    "mssql3": {
+      "secretStore": null,
+      "type": "mssql.local",
+      "connectionId": "PawFriendsDB",
+      "dynamicId": null
+    },
+    "mssql4": {
+      "secretStore": null,
+      "type": "mssql.local",
+      "connectionId": "PawFriendsDBb",
+      "dynamicId": null
+    },
+    "mssql6": {
+      "secretStore": null,
+      "type": "mssql.local",
+      "connectionId": "PawFriendsDBBB",
+      "dynamicId": null
+    },
+    "mssql7": {
+      "secretStore": null,
+      "type": "mssql.local",
+      "connectionId": "PawFriendsTables",
+      "dynamicId": null
+    }
+  }
+}

@@ -1,0 +1,174 @@
+﻿@model PawFriends___Work.Models.Comment
+
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    * {
+  outline:none;
+	border:none;
+	margin:0px;
+	padding:0px;
+}
+
+body{
+        background-image: url("https://previews.123rf.com/images/emukhin/emukhin1302/emukhin130200047/17986796-cat-paw-and-face-seamless-background.jpg");
+    background-repeat: repeat;
+}
+
+#paper {
+	color:black;
+	font-size:20px;
+}
+
+#margin {
+	margin-left:12px;
+	margin-bottom:20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none; 
+}
+#text {
+	width:500px;
+	overflow:hidden;
+	background-color:#FFF;
+	color:#222;
+	font-weight:normal;
+	font-size:24px;
+	resize:none;
+	line-height:40px;
+	padding-left:100px;
+	padding-right:100px;
+
+	padding-bottom:34px;
+	background-image:url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
+	background-repeat:repeat-y, repeat;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	-webkit-box-shadow: 0px 2px 14px #000;
+	box-shadow: 0px 2px 14px #000;
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+}
+#title {
+	background-color:transparent;
+	border-bottom:3px solid black;
+	color:black;
+	font-size:20px;
+	font-family:Courier, monospace;
+	height:28px;
+	font-weight:bold;
+	width:220px;
+}
+
+#wrapper {
+	width:700px;
+	height:auto;
+        font-weight: bold;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:24px;
+	margin-bottom:100px;
+}
+</style>
+
+<!--Header-->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/Home/Index">PawFriends</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/Home/Game">Try this LOL</a</li>
+                    <li class="nav-item"><a class="nav-link" href="/Categories/Index">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Posts/Index/?page=1">Posts</a</li>
+                        @if (ViewBag.AfisareButoane==true){
+                        <li class="nav-item"><a class="nav-link" href="/Users/Index">View Users</a></li>
+                    }
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<h2>Re-build your comment!</h2>
+<br />
+
+
+@using (Html.BeginForm(controllerName: "Comments", actionName: "Edit", 
+       method: FormMethod.Post, routeValues: new { id = Model.Id }))
+
+{
+
+	<div id="wrapper">
+        <div style="background-color: floralwhite; height: 40px; width: 600px; text-align: center; border-radius: 25px; align-self: center;">
+            <h2>@Html.Label("Content", "Comment content")</h2>
+        </div>
+		<textarea id="text" name="text" rows="4" style="margin-top: 10px; overflow: hidden; word-wrap: break-word; height: 300px; width:700px; "></textarea>  
+        @Html.ValidationMessage("Content", null, new { @class = "text-danger" })
+        <br />
+        <br />
+
+    <button class="btn btn-dark btn-xl" type="submit" style="float: right;">Commit changes</button>
+	</div>
+}
+    <div >
+        <img src="https://media.tenor.com/fkAgaGYXwIAAAAAC/mexican-cat-un-des.gif" style="  display: block;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 50px;" 
+        alt="dancing cat wexicano" />
+    </div>
+
+     <!-- Footer-->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/birbyz/" role="button">
+                    <i class="bi bi-facebook"></i><small>&#32;Birbyz</small>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/imbirbyz/" role="button">
+                    <i class="bi bi-instagram"></i><small>&#32;Birbyz</small>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/ioana-andreea-filimon-901b31248/" role="button">
+                    <i class="bi bi-linkedin"></i><small>&#32;Birbyz</small>
+                </a>
+
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/profile.php?id=100023665218150" role="button">
+                    <i class="bi bi-facebook"></i><small>&#32;KVL</small>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/m_andrei09/" role="button">
+                    <i class="bi bi-instagram"></i><small>&#32;KVL</small>
+                </a>
+
+                <!-- Linkedin -->
+
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022-2023 Copyright:
+            <a class="text-white" href="#">MeowStaff</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+

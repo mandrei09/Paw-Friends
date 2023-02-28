@@ -1,0 +1,602 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+
+
+<style>
+
+body {
+  background: #f2f1ef;
+}
+
+.wrap {
+  width: 95%;
+  margin: 0 auto
+}
+
+
+p {
+  padding-bottom: 16px
+}
+
+
+a:hover,
+a:focus {
+  color: #e8c000
+}
+
+.btn,
+input[type="submit"]#submit {
+  background: #000;
+  color: #fff
+}
+
+.btn:hover,
+input[type="submit"]#submit:hover,
+.btn:focus,
+input[type="submit"]#submit:focus {
+  background: #a68f21;
+  color: #fff
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"] {
+  width: 100%;
+  max-width: 100%;
+  height: 40px;
+  margin-bottom: 18px;
+  padding: 14px 20px;
+  vertical-align: top;
+  border: none;
+  border-radius: 0;
+  font: normal 900 10px/20px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+  height: 152px;
+  margin-bottom: 18px;
+  padding: 10px 20px;
+  vertical-align: middle;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+  font: normal 900 10px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  line-height: 20px;
+  overflow: auto;
+  resize: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+textarea:focus {
+  line-height: 22px
+}
+
+select {
+  width: 30%;
+  height: 40px;
+  padding: 0 3%;
+  display: none;
+  position: relative;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+  font: normal 900 0px/20px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  line-height: 48px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+
+.input-light {
+  background: #f1f1ef;
+  color: #515151
+}
+
+.input-dark {
+  background: #454545;
+  color: #ffffff
+}
+
+
+.page-header .main-nav li ul:before {
+  content: "";
+  width: 0;
+  height: 0;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 8px solid black
+}
+
+body main {
+  padding: 30px 0 0px;
+}
+
+main {
+  padding: 30px 0 58px;
+  overflow-x: hidden;
+  clear: both
+}
+
+main .hero-image {
+  margin-top: 20px;
+  padding-bottom: 52px;
+  display: block;
+  text-align: center
+}
+
+main .hero-image img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto
+}
+
+main .box {
+  width: 100%;
+  height: 116px;
+  margin: 0 auto 30px;
+  display: block;
+  position: relative;
+  background: #fff
+}
+
+main .box_0 {
+  display: block;
+  width: 100%;
+}
+
+main .box .box-image {
+  background-image: url('https://goo.gl/tNc1B0');
+  width: 100%;
+  height: 80px;
+  display: block
+}
+
+main .box h2 {
+  margin: 0 auto;
+  padding-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  font: normal 900 10px/40px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  color: #000;
+  text-align: center;
+}
+
+main .box:hover .box-image,
+main .box:focus .box-image {
+  opacity: 0.8;
+  -webkit-transition: .2s opacity ease-in-out;
+  transition: .2s opacity ease-in-out
+}
+
+main .box:hover h2,
+main .box:focus h2 {
+  color: #a68f21;
+  -webkit-transition: .2s color ease-in-out;
+  transition: .2s color ease-in-out
+}
+
+main .box.social {
+  text-align: center;
+  position: relative
+}
+
+main .box.social a {
+  margin-right: 12px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 90px;
+  color: #000
+}
+
+main .box.social a:hover,
+main .box.social a:focus {
+  color: #ae9623;
+  text-decoration: none
+}
+
+main .box.social > a:nth-child(6) {
+  margin-right: 0
+}
+
+main .box.social h2:after {
+  content: "";
+  display: block;
+  width: 84%;
+  height: 1px;
+  position: absolute;
+  top: 0px;
+  left: 8%;
+  background: #000
+}
+
+.container {
+  margin: 0 auto
+}
+
+article {
+  margin: 0 auto;
+  max-width: 1250px;
+  padding-bottom: 30px;
+  font-size: 14px;
+  line-height: 26px;
+  text-align: left;
+}
+
+article .header {
+  padding: 40px 6% 34px;
+  position: relative;
+  background: #fff
+}
+
+article .title {
+  width: calc(100% - 4px);
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 95px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+article .title h1 {
+  width: 100%;
+  padding-bottom: 0px
+}
+
+article .title h1 a {
+  color: #000;
+  font-style: normal;
+                text-decoration: none;
+}
+
+article .title h1 a:hover,
+article .title h1 a:focus {
+  color: #ae9623;
+  text-decoration: none
+}
+
+
+article .title .byline {
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-style: italic;
+  color: #888
+}
+
+article .title .byline address {
+  padding-right: 8px;
+  display: inline-block
+}
+
+article .title .byline address span {
+  color: #888;
+  text-decoration: none;
+}
+
+article .header .byline time {
+  padding-left: 8px
+}
+
+article .content {
+  background: #fff;
+  padding: 0 6% 48px;
+  overflow: hidden
+}
+
+article .content img {
+  width: 114%;
+  height: auto;
+  margin: 0 0 20px -7%;
+  display: block
+}
+
+article .content figure.wp-caption {
+  max-width: 100%
+}
+
+article .content figure.wp-caption figcaption.wp-caption-text {
+  text-align: center;
+  font-style: italic
+}
+
+article .content img[class*="wp-image"] {
+  width: 114%;
+  height: auto;
+  margin: 10px 0 10px -7%;
+  display: block
+}
+
+article .content iframe[src*="youtube.com"],
+article .content iframe[src*="vimeo.com"] {
+  margin: 10px 0 10px -7%
+}
+
+article .content p:first-child img[class*="post-image"],
+article .content p:first-child img[class*="wp-image"] {
+  margin-top: 0 !important
+}
+
+article .content p.image-wrap {
+  padding-bottom: 0
+}
+
+article .content p.image-wrap+p:not(.image-wrap) {
+  padding-top: 16px
+}
+
+article .content blockquote {
+  margin-top: 10px
+}
+
+article .content .read-more {
+  margin-top: 20px
+}
+
+article .content .read-more a {
+  font-size: 12px;
+  letter-spacing: 2px
+}
+
+article .content .read-more a:hover {
+  background: #a68f21
+}
+
+article .footer {
+  background: #dadad7
+}
+
+article .footer .actions {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center
+}
+
+article .footer .actions .action-button {
+  padding: 26px 0;
+  display: block;
+  font: normal 900 13px/24px 'Roboto', Arial, sans-serif;
+  letter-spacing: 2px;
+  color: #000;
+  text-align: center;
+}
+
+article .footer .actions .action-button .icon {
+  display: block;
+  font-size: 26px
+}
+
+article .footer .actions .action-button .icon .count {
+  padding: 0 0 0 3px;
+  display: none;
+  vertical-align: top;
+  font-size: 13px
+}
+
+article .footer .actions .action-button:hover {
+  color: #ae9623;
+  text-decoration: none
+}
+
+article .footer .actions .favorite {
+  padding-top: 21px
+}
+
+article .footer .actions .favorite .icon-heart {
+  font-size: 32px;
+  color: #000
+}
+
+article .footer .actions .favorite .active .icon-heart {
+  color: #AE961E
+}
+
+article .footer .actions .favorite .zilla-likes-count {
+  display: none
+}
+
+article .footer .actions .comment .icon .count {
+  padding: 0 0 0 8px
+}
+
+article .footer .actions .twitter .icon .count {
+  padding: 0 0 0 7px
+}
+
+hr {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+</style>
+
+
+<!--Header-->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">PawFriends</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/Home">Home Page</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Categories/Index">Categories</a></li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+</header>
+
+<br />
+<br />
+
+<div style="margin-left: 55px;">
+    <h2>Order By:</h2>
+    <a class="btn btn-outline-success" href="/Posts/Index?sortBy=@ViewBag.SortByTitle">Title 	&#8682;</a>
+    
+<a class="btn btn-outline-success" href="/Posts/Index?sortBy=@ViewBag.SortByTitleDesc">Title &#8681;</a>
+
+    <a class="btn btn-outline-success" href="/Posts/Index?sortBy=@ViewBag.SortByDate">Date 	&#8682;</a>
+
+    <a class="btn btn-outline-success" href="/Posts/Index?sortBy=@ViewBag.SortByDateDesc">Date &#8681;</a>
+</div>
+
+<hr>
+
+<div class="d-flex justify-content-center">
+    <a class="btn btn-light btn-xl" href="/Categories/Index/">Show Categories</a>&#10240;&#10240;
+    <br />
+    <a class="btn btn-light btn-xl" href="/Posts/New">Add Post</a>
+    <br />
+</div>
+
+@foreach (var post in ViewBag.Posts)
+{
+    <main>
+        <section class="container">
+
+            <article>
+                <div class="header">
+                    <div class="title">
+                        <h1 style="font: normal 400 24px 'Roboto', Arial, sans-serif;   
+                                    padding-bottom: 12px;
+                                    color: #000;
+                                    text-transform: uppercase">
+                            <a href="/Posts/Show/@post.Id">@post.Title</a>
+                        </h1>
+
+                        <div class="byline">
+                            <div style="font-size: 15px;">
+                                @if(@post.Category.CategoryName == "MedHelp"){
+                                    <b>&#9877;</b>
+                                }
+                                @if(@post.Category.CategoryName == "CatAww"){
+                                    <b>&#128157;</b>
+                                }
+                                @post.Category.CategoryName&#10240;&#10240;|
+                                <time class="entry-date published updated">@post.Date</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <hr>
+                    <div style="justify-content: center; display: flex;">
+                    <img style="width: 450px; height: auto;" src="@post.Icon" />
+                    </div>
+                    <p>
+                        @post.Content
+                    </p>
+                    <a class="btn btn-light btn-xl" href="/Posts/Show/@post.Id">View Post</a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <hr />
+}
+
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="@ViewBag.PaginationBaseUrl=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.lastPage; i++)
+            {
+                <li class="page-item"> <a class="page-link" href="/Posts/Index/?page=@i">@(i)</a> </li>
+            }
+
+            <li class="page-item">
+                <a class="page-link" href="@ViewBag.PaginationBaseUrl=@(ViewBag.lastPage)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<br />
+<br />
+<br />
+
+<!-- Footer-->
+<footer class="bg-dark text-center text-white" style="margin: -16px;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/birbyz/" role="button">
+                <i class="bi bi-facebook"></i><small>&#32;Birbyz</small>
+            </a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/imbirbyz/" role="button">
+                <i class="bi bi-instagram"></i><small>&#32;Birbyz</small>
+            </a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/ioana-andreea-filimon-901b31248/" role="button">
+                <i class="bi bi-linkedin"></i><small>&#32;Birbyz</small>
+            </a>
+
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/profile.php?id=100023665218150" role="button">
+                <i class="bi bi-facebook"></i><small>&#32;KVL</small>
+            </a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/m_andrei09/" role="button">
+                <i class="bi bi-instagram"></i><small>&#32;KVL</small>
+            </a>
+
+            <!-- Linkedin -->
+
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022-2023 Copyright:
+        <a class="text-white" href="#">MeowStaff</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
