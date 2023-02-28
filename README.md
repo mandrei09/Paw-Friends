@@ -7,5 +7,9 @@ Looking for a place to post your lovely cats 😻, to find a solution for your c
 ## How-to-use
 
 To open the application, open the **PawFriends - Work.sln** file in Visual Studio and run it from there.
+
 ![image](https://user-images.githubusercontent.com/95626494/221880470-bd6e1169-c298-4b7a-8158-dabeb30dbd1d.png)
+
+If you just want to see what others have posted, you can still acces the platform without an account, but you won't be able to post unless you join us. (what we would encourage you to do)
+
 
